@@ -1,0 +1,75 @@
+body{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+.body{
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    z-index: 1;
+    contain: layout;
+}
+
+.row{
+    --duration: 10s;
+    width: 100vw;
+    transition: all .2s ease-in-out;
+    left: 0;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    white-space: nowrap;
+    animation: marquee calc(6 * var(--duration)) linear infinite;
+    animation-play-state: paused;
+    contain: layout;
+}
+
+.row:hover{
+    animation-play-state: running;
+}
+
+.div{
+    animation: marquee calc(3 * var(--duration)) linear infinite;
+}
+
+.row:nth-child(2),.row:nth-child(2) div{
+    animation-direction: reverse;
+}
+
+.row:hover .div{
+    animation-play-state: paused;
+}
+
+.div span:hover{
+    color: #fff;
+}
+
+.div span{
+    text-transform: uppercase;
+    font: normal 96px/120px "NeuePlak-Black",-apple-system,BlinkMacSystemFont,Lato,"Segoe UI",Verdana,Arial,sans-serif;
+    display: inline-block;
+    font-weight: 400;
+    color: #0000;
+    font-size: 90px;
+    transition: all .2s ease-in-out;
+    cursor: default;
+    -webkit-text-stroke: 2px #fff;
+}
+
+.div span:after{
+    content: '';
+    margin-right: 0.25ch;
+    display: inline;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate3d(0%, 0, 0);
+    }
+    100% {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
